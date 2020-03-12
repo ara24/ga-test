@@ -1,10 +1,11 @@
 import $ from 'jquery';
+window.$ = $;
 
 const SELECTOR = {
-  A_PAGE_BTN: '.menu.a-btn',
-  B_PAGE_BTN: '.menu.b-btn',
-  C_PAGE_BTN: '.menu.c-btn',
-  D_PAGE_BTN: '.menu.d-btn',
+  A_PAGE_BTN: '.menu > .a-btn',
+  B_PAGE_BTN: '.menu > .b-btn',
+  C_PAGE_BTN: '.menu > .c-btn',
+  D_PAGE_BTN: '.menu > .d-btn',
   PAGE_LIST: '.pages-wrap > div',
   INNER_B_PAGE_BTN: '.inner.b-btn'
 }
@@ -25,6 +26,7 @@ export default class Main {
 
   init() {
     this.$aBtn = $(SELECTOR.A_PAGE_BTN);
+    console.log(this.$aBtn);
     this.$bBtn = $(SELECTOR.B_PAGE_BTN);
     this.$cBtn = $(SELECTOR.C_PAGE_BTN);
     this.$dBtn = $(SELECTOR.D_PAGE_BTN);

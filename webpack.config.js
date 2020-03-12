@@ -10,7 +10,7 @@ module.exports = {
   },
   devtool: " inline-source-map",
   devServer: {
-    contentBase: path.resolve(__dirname, "dist"), // === './dist'
+    contentBase: path.resolve(__dirname),
     host: "localhost",
     port: 9000,
     inline: true,
@@ -36,7 +36,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: "./index.html",
       filename: "./index.html"
     })
   ]
