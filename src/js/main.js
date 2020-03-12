@@ -1,11 +1,12 @@
 import $ from 'jquery';
 
 const SELECTOR = {
-  A_PAGE_BTN: '.a-btn',
-  B_PAGE_BTN: '.b-btn',
-  C_PAGE_BTN: '.c-btn',
-  D_PAGE_BTN: '.d-btn',
+  A_PAGE_BTN: '.menu.a-btn',
+  B_PAGE_BTN: '.menu.b-btn',
+  C_PAGE_BTN: '.menu.c-btn',
+  D_PAGE_BTN: '.menu.d-btn',
   PAGE_LIST: '.pages-wrap > div',
+  INNER_B_PAGE_BTN: '.inner.b-btn'
 }
 
 const PAGE_INDEX = {
@@ -29,6 +30,8 @@ export default class Main {
     this.$dBtn = $(SELECTOR.D_PAGE_BTN);
 
     this.$pages = $(SELECTOR.PAGE_LIST);
+
+    this.$innerBBtn = $(SELECTOR.INNER_B_PAGE_BTN);
   }
 
   active() {
@@ -36,6 +39,7 @@ export default class Main {
     this.$bBtn.on('click', this._onClickBBtn.bind(this));
     this.$cBtn.on('click', this._onClickCBtn.bind(this));
     this.$dBtn.on('click', this._onClickDBtn.bind(this));
+    this.$innerBBtn.on('click', this._onClickInnerBBtn.bind(this));
   }
 
   deactive() {
@@ -43,30 +47,52 @@ export default class Main {
     this.$bBtn.off('click');
     this.$cBtn.off('click');
     this.$dBtn.off('click');
+    this.$innerBBtn.off('click');
   }
 
   _onClickABtn() {
     // console.log('_onClickABtn');
     this.showTargetPage(PAGE_INDEX.A_PAGE);
-    gtag('event', 'a-page');
+    gtag('event', 'move-a-page', {
+      'event_category': 'menu',
+      'event_label': 'method'
+    });
   }
 
   _onClickBBtn() {
     // console.log('_onClickBBtn');
     this.showTargetPage(PAGE_INDEX.B_PAGE);
-    gtag('event', 'b-page');
+    gtag('event', 'move-b-page', {
+      'event_category': 'menu',
+      'event_label': 'method'
+    });
   }
 
   _onClickCBtn() {
     // console.log('_onClickCBtn');
     this.showTargetPage(PAGE_INDEX.C_PAGE);
-    gtag('event', 'c-page');
+    gtag('event', 'move-c-page', {
+      'event_category': 'menu',
+      'event_label': 'method'
+    });
   }
 
   _onClickDBtn() {
     // console.log('_onClickDBtn');
     this.showTargetPage(PAGE_INDEX.D_PAGE);
-    gtag('event', 'd-page');
+    gtag('event', 'move-d-page', {
+      'event_category': 'menu',
+      'event_label': 'method'
+    });
+  }
+
+  _onClickInnerBBtn() {
+    // console.log('_onClickInnerBBtn');
+    this.showTargetPage(PAGE_INDEX.B_PAGE);
+    gtag('event', 'move-b-page', {
+      'event_category': 'inner btn',
+      'event_label': ''
+    });
   }
 
   showTargetPage(pageIndex) {
