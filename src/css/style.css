@@ -1,3 +1,7 @@
-#result {
-  background-color: green;
+.pages-wrap > div {
+  display: none;
+}
+
+.pages-wrap > div.on {
+  display: block;
 }
