@@ -48,21 +48,25 @@ export default class Main {
   _onClickABtn() {
     // console.log('_onClickABtn');
     this.showTargetPage(PAGE_INDEX.A_PAGE);
+    gtag('event', 'a-page');
   }
 
   _onClickBBtn() {
     // console.log('_onClickBBtn');
     this.showTargetPage(PAGE_INDEX.B_PAGE);
+    gtag('event', 'b-page');
   }
 
   _onClickCBtn() {
     // console.log('_onClickCBtn');
     this.showTargetPage(PAGE_INDEX.C_PAGE);
+    gtag('event', 'c-page');
   }
 
   _onClickDBtn() {
     // console.log('_onClickDBtn');
     this.showTargetPage(PAGE_INDEX.D_PAGE);
+    gtag('event', 'd-page');
   }
 
   showTargetPage(pageIndex) {
