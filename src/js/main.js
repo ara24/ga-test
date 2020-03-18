@@ -7,7 +7,8 @@ const SELECTOR = {
   C_PAGE_BTN: '.menu > .c-btn',
   D_PAGE_BTN: '.menu > .d-btn',
   PAGE_LIST: '.pages-wrap > div',
-  INNER_B_PAGE_BTN: '.inner.b-btn'
+  INNER_B_PAGE_BTN: '.inner.b-btn',
+  D_PAGE_OPTION_BTNS: '.d-page Button.option'
 }
 
 const PAGE_INDEX = {
@@ -26,7 +27,6 @@ export default class Main {
 
   init() {
     this.$aBtn = $(SELECTOR.A_PAGE_BTN);
-    console.log(this.$aBtn);
     this.$bBtn = $(SELECTOR.B_PAGE_BTN);
     this.$cBtn = $(SELECTOR.C_PAGE_BTN);
     this.$dBtn = $(SELECTOR.D_PAGE_BTN);
@@ -34,6 +34,9 @@ export default class Main {
     this.$pages = $(SELECTOR.PAGE_LIST);
 
     this.$innerBBtn = $(SELECTOR.INNER_B_PAGE_BTN);
+
+    this.$options = $(SELECTOR.D_PAGE_OPTION_BTNS);
+    console.log(this.$options);
   }
 
   active() {
@@ -42,6 +45,7 @@ export default class Main {
     this.$cBtn.on('click', this._onClickCBtn.bind(this));
     this.$dBtn.on('click', this._onClickDBtn.bind(this));
     this.$innerBBtn.on('click', this._onClickInnerBBtn.bind(this));
+    this.$options.on('click', this._onClickOptions.bind(this));
   }
 
   deactive() {
@@ -50,6 +54,7 @@ export default class Main {
     this.$cBtn.off('click');
     this.$dBtn.off('click');
     this.$innerBBtn.off('click');
+    this.$options.off('click');
   }
 
   _onClickABtn() {
@@ -94,6 +99,16 @@ export default class Main {
     gtag('event', 'move-b-page', {
       'event_category': 'inner btn',
       'event_label': ''
+    });
+  }
+
+  _onClickOptions(e) {
+    const value = $(e.target).data().value;
+
+    gtag('event', 'click-option', {
+      'event_category': 'in d page',
+      'event_label': 'options',
+      'value': value
     });
   }
 
